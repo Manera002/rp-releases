@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>RED PESTILENCE: вход</title>
+<style>
+  html, body { height: 100%; margin: 0; }
+  body { display: grid; place-items: center; background: radial-gradient(ellipse at 50% 0%, #2a0e12 0%, #0d0b0c 60%); color: #f3eeee; font: 16px "Segoe UI", system-ui, -apple-system, Roboto, "Noto Sans", Arial, sans-serif; }
+  main { width: min(440px, calc(100vw - 32px)); box-sizing: border-box; padding: 32px 28px; text-align: center; background: #181213; border: 1px solid rgba(255,255,255,.14); border-radius: 12px; box-shadow: 0 24px 80px rgba(0,0,0,.8), 0 0 0 1px rgba(179,18,31,.18); }
+  h1 { margin: 0 0 6px; font: 700 20px "Cinzel", "Trajan Pro", Georgia, serif; letter-spacing: .16em; color: #d11a2a; }
+  .sub { margin: 0 0 22px; color: #b9afb0; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+  p { margin: 0 0 18px; line-height: 1.55; }
+  button { cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 0 22px; border: 0; border-radius: 6px; background: #b3121f; color: #fff; font: 600 15px inherit; }
+  button:hover:not(:disabled) { background: #d11a2a; box-shadow: 0 0 18px rgba(179,18,31,.45); }
+  button:disabled { opacity: .55; cursor: default; }
+  button:focus-visible { outline: 2px solid #ff7a85; outline-offset: 2px; }
+  .msg { min-height: 1.5em; margin-top: 16px; font-size: 14px; color: #b9afb0; }
+  .msg.err { color: #ff7b85; }
+  .msg.ok { color: #3ecf6e; font-size: 16px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1>RED PESTILENCE</h1>
+  <div class="sub" id="sub"></div>
+  <p id="intro"></p>
+  <button id="go" type="button"></button>
+  <div class="msg" id="msg" role="status" aria-live="polite"></div>
+</main>
+
+<script type="module">
+// Страница входа через Google для RED PESTILENCE Launcher.
+// Конфигурация Firebase публичная по замыслу (защита данных: правила Firestore). Здесь нет секретов.
+// Поток: лаунчер открывает эту страницу с ?port=<порт>&lang=<язык>#state=<значение>, мы входим через Google и
+// переходим на http://127.0.0.1:<порт>/auth#state=…&gid=<id-токен Google>. Больше нигде токены не сохраняются и не отправляются.
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
+import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, signOut } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyBIwwtsmEWi1bsQUAj3oaR2cuhAucEzBIM',
+  authDomain: 'red-pestilence-launcher.firebaseapp.com',
+  projectId: 'red-pestilence-launcher',
+  storageBucket: 'red-pestilence-launcher.firebasestorage.app',
+  messagingSenderId: '609239377492',
+  appId: '1:609239377492:web:1999b9dd4ac6139d3d2fc1'
+};
+
+const TEXT = {
+  ru: { title: 'RED PESTILENCE: вход', sub: 'Вход в аккаунт', intro: 'Нажмите кнопку и выберите аккаунт Google. После этого вы вернётесь в лаунчер.', btn: 'Продолжить через Google', wait: 'Открываем окно Google…', handing: 'Вход выполнен. Возвращаемся в лаунчер…', done: 'Можно закрыть вкладку и вернуться в лаунчер', noparams: 'Эта страница открывается из лаунчера. Откройте лаунчер и нажмите «Продолжить через Google».', cancel: 'Окно входа было закрыто. Нажмите кнопку ещё раз.', domain: 'Этот адрес страницы не разрешён в настройках Firebase (authorized domains). Сообщите разработчикам.', fail: 'Не удалось войти через Google. Попробуйте ещё раз.', net: 'Нет связи с интернетом. Проверьте подключение.' },
+  en: { title: 'RED PESTILENCE: sign in', sub: 'Account sign-in', intro: 'Press the button and choose your Google account. Then you will return to the launcher.', btn: 'Continue with Google', wait: 'Opening the Google window…', handing: 'Signed in. Returning to the launcher…', done: 'You can close this tab and return to the launcher', noparams: 'This page is opened from the launcher. Open the launcher and press "Continue with Google".', cancel: 'The sign-in window was closed. Press the button again.', domain: 'This page address is not allowed in the Firebase settings (authorized domains). Please tell the developers.', fail: 'Google sign-in failed. Please try again.', net: 'No internet connection. Check your network.' },
+  uk: { title: 'RED PESTILENCE: вхід', sub: 'Вхід в обліковий запис', intro: 'Натисніть кнопку та оберіть обліковий запис Google. Після цього ви повернетеся до лаунчера.', btn: 'Продовжити через Google', wait: 'Відкриваємо вікно Google…', handing: 'Вхід виконано. Повертаємось до лаунчера…', done: 'Можна закрити вкладку й повернутися до лаунчера', noparams: 'Ця сторінка відкривається з лаунчера. Відкрийте лаунчер і натисніть «Продовжити через Google».', cancel: 'Вікно входу було закрито. Натисніть кнопку ще раз.', domain: 'Цю адресу сторінки не дозволено в налаштуваннях Firebase (authorized domains). Повідомте розробників.', fail: 'Не вдалося увійти через Google. Спробуйте ще раз.', net: 'Немає зв\u2019язку з інтернетом. Перевірте підключення.' }
+};
+
+const $ = (id) => document.getElementById(id);
+const q = new URLSearchParams(location.search);
+const h = new URLSearchParams(location.hash.slice(1));
+const KEY = 'rp-auth-params';
+
+// параметры: при первом заходе берём из адреса и запоминаем на вкладке (нужно, если Google вернёт нас после перенаправления)
+let params = null;
+{
+  const port = q.get('port'), state = h.get('state') || q.get('state'), lang = (q.get('lang') || '').toLowerCase();
+  if (port || state) { params = { port, state, lang }; try { sessionStorage.setItem(KEY, JSON.stringify(params)); } catch (_) { /* ignore */ } }
+  else { try { params = JSON.parse(sessionStorage.getItem(KEY) || 'null'); } catch (_) { params = null; } }
+  try { history.replaceState(null, '', location.pathname + (params && params.port ? '?port=' + encodeURIComponent(params.port) + '&lang=' + encodeURIComponent(params.lang || '') : '')); } catch (_) { /* ignore */ }
+}
+const lang = TEXT[params && params.lang] ? params.lang : (TEXT[(navigator.language || '').slice(0, 2)] ? (navigator.language || '').slice(0, 2) : 'ru');
+const tx = TEXT[lang];
+document.documentElement.lang = lang;
+document.title = tx.title;
+$('sub').textContent = tx.sub;
+$('intro').textContent = tx.intro;
+$('go').textContent = tx.btn;
+
+const portNum = params && /^\d{3,5}$/.test(String(params.port)) ? Number(params.port) : 0;
+const stateOk = params && /^[0-9a-f]{32,128}$/.test(String(params.state || ''));
+const valid = portNum >= 1024 && portNum <= 65535 && stateOk;
+const msg = (text, cls = '') => { const m = $('msg'); m.textContent = text; m.className = 'msg ' + cls; };
+
+if (!valid) {
+  $('go').hidden = true;
+  $('intro').hidden = true;
+  msg(tx.noparams);
+} else {
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  auth.languageCode = lang;
+  const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({ prompt: 'select_account' });
+
+  // Передаём результат ТОЛЬКО на loopback-адрес лаунчера (127.0.0.1:порт) вместе с одноразовым state.
+  async function handOver(result) {
+    const cred = GoogleAuthProvider.credentialFromResult(result);
+    const gid = cred && cred.idToken ? cred.idToken : '';
+    const rt = !gid && result.user && result.user.refreshToken ? result.user.refreshToken : '';
+    if (!gid && !rt) throw new Error('no-token');
+    $('go').hidden = true; $('intro').hidden = true;
+    msg(tx.handing, 'ok');
+    try { await signOut(auth); } catch (_) { /* не критично */ }
+    try { sessionStorage.removeItem(KEY); } catch (_) { /* ignore */ }
+    const frag = new URLSearchParams({ state: params.state });
+    if (gid) frag.set('gid', gid); else frag.set('rt', rt);
+    setTimeout(() => { msg(tx.done, 'ok'); }, 4000);
+    location.replace('http://127.0.0.1:' + portNum + '/auth#' + frag.toString());
+  }
+  function explain(e) {
+    const c = e && e.code;
+    if (c === 'auth/popup-closed-by-user' || c === 'auth/cancelled-popup-request') return tx.cancel;
+    if (c === 'auth/unauthorized-domain') return tx.domain;
+    if (c === 'auth/network-request-failed') return tx.net;
+    return tx.fail;
+  }
+  async function start() {
+    $('go').disabled = true; msg(tx.wait);
+    try {
+      await handOver(await signInWithPopup(auth, provider));
+    } catch (e) {
+      if (e && e.code === 'auth/popup-blocked') { try { await signInWithRedirect(auth, provider); return; } catch (e2) { e = e2; } }
+      $('go').disabled = false;
+      msg(explain(e), 'err');
+    }
+  }
+  $('go').addEventListener('click', start);
+  // возврат после signInWithRedirect (если всплывающее окно было заблокировано)
+  getRedirectResult(auth).then((r) => { if (r && r.user) return handOver(r); }).catch((e) => { msg(explain(e), 'err'); });
+}
+</script>
+<noscript><p style="position:fixed;bottom:16px;left:0;right:0;text-align:center;color:#ff7b85">JavaScript is required.</p></noscript>
+</body>
+</html>
