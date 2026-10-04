@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "updated": "2026-10-04",
+  "hero": [
+    {
+      "id": "hero-main",
+      "kicker": {
+        "ru": "Новая история",
+        "en": "A new story",
+        "uk": "Нова історія"
+      },
+      "title": "RED PESTILENCE",
+      "subtitle": {
+        "ru": "Некоторым вещам лучше было остаться под землёй.",
+        "en": "Some things should have stayed beneath the earth.",
+        "uk": "Дещо краще було б залишити під землею."
+      },
+      "image": "bg.jpg",
+      "cta": {
+        "ru": "Играть",
+        "en": "Play",
+        "uk": "Грати"
+      },
+      "link": "action:play"
+    },
+    {
+      "id": "hero-team",
+      "kicker": {
+        "ru": "Набор в команду",
+        "en": "Join the team",
+        "uk": "Набір у команду"
+      },
+      "title": {
+        "ru": "Ищем людей в команду",
+        "en": "We are looking for people",
+        "uk": "Шукаємо людей у команду"
+      },
+      "subtitle": {
+        "ru": "Нужны художники, мапперы, скриптеры, монтажёры, модераторы и тестеры. Работа на энтузиазме, без зарплат. Посмотрите вакансии.",
+        "en": "We need artists, mappers, scripters, video editors, moderators and testers. The work is done out of enthusiasm, without salaries. Take a look at the vacancies.",
+        "uk": "Потрібні художники, мапери, скриптери, монтажери, модератори й тестувальники. Робота на ентузіазмі, без зарплат. Подивіться вакансії."
+      },
+      "image": "art-city.jpg",
+      "cta": {
+        "ru": "Смотреть вакансии",
+        "en": "See vacancies",
+        "uk": "Дивитися вакансії"
+      },
+      "link": "nav:jobs"
+    },
+    {
+      "id": "hero-codex",
+      "kicker": {
+        "ru": "Дневник разработчиков",
+        "en": "Developer diary",
+        "uk": "Щоденник розробників"
+      },
+      "title": {
+        "ru": "Кодекс мира",
+        "en": "Codex of the world",
+        "uk": "Кодекс світу"
+      },
+      "subtitle": {
+        "ru": "Четыре Камня, первые Владыки, уникальное оружие и правила заражения - в новой вкладке на странице игры. Тайны остаются скрытыми.",
+        "en": "Four Stones, the first Lords, unique weapons and the rules of infection — in a new tab on the game page. The secrets stay hidden.",
+        "uk": "Чотири Камені, перші Володарі, унікальна зброя та правила зараження — у новій вкладці на сторінці гри. Таємниці залишаються прихованими."
+      },
+      "image": "art-throne.jpg",
+      "cta": {
+        "ru": "Открыть страницу игры",
+        "en": "Open the game page",
+        "uk": "Відкрити сторінку гри"
+      },
+      "link": "nav:game"
+    },
+    {
+      "id": "hero-seals",
+      "kicker": {
+        "ru": "Дневник разработчиков",
+        "en": "Developer diary",
+        "uk": "Щоденник розробників"
+      },
+      "title": {
+        "ru": "Магия на печатях",
+        "en": "Magic of the seals",
+        "uk": "Магія на печатках"
+      },
+      "subtitle": {
+        "ru": "Три печати на старте вместо длинной шкалы маны: каждое заклинание - осознанный выбор. Подробности - в Кодексе, в разделе «Механики».",
+        "en": "Three seals at the start instead of a long mana bar: every spell is a deliberate choice. Details are in the Codex, under “Mechanics”.",
+        "uk": "Три печатки на старті замість довгої шкали мани: кожне закляття — свідомий вибір. Подробиці — у Кодексі, у розділі «Механіки»."
+      },
+      "image": "art-sorcerer.jpg",
+      "cta": {
+        "ru": "Открыть страницу игры",
+        "en": "Open the game page",
+        "uk": "Відкрити сторінку гри"
+      },
+      "link": "nav:game"
+    },
+    {
+      "id": "hero-infection",
+      "kicker": {
+        "ru": "Дневник разработчиков",
+        "en": "Developer diary",
+        "uk": "Щоденник розробників"
+      },
+      "title": {
+        "ru": "Заражение без возврата",
+        "en": "Infection with no way back",
+        "uk": "Зараження без вороття"
+      },
+      "subtitle": {
+        "ru": "Пороги 30%, 60% и 90% необратимы, пока герой жив. Смерть снимает лишь один слой.",
+        "en": "The 30%, 60% and 90% thresholds are irreversible while the hero lives. Death removes only one layer.",
+        "uk": "Пороги 30%, 60% і 90% незворотні, поки герой живий. Смерть знімає лише один шар."
+      },
+      "image": "art-fog.jpg",
+      "cta": {
+        "ru": "Подробнее",
+        "en": "Learn more",
+        "uk": "Докладніше"
+      },
+      "link": "nav:game"
+    }
+  ],
+  "news": [
+    {
+      "id": "n-about",
+      "kicker": {
+        "ru": "RED PESTILENCE",
+        "en": "RED PESTILENCE",
+        "uk": "RED PESTILENCE"
+      },
+      "title": {
+        "ru": "RED PESTILENCE: тёмное фэнтези про чумного доктора. Игра в разработке",
+        "en": "RED PESTILENCE: dark fantasy about a plague doctor. The game is in development",
+        "uk": "RED PESTILENCE: темне фентезі про чумного лікаря. Гра в розробці"
+      },
+      "date": {
+        "ru": "4 октября 2026",
+        "en": "October 4, 2026",
+        "uk": "4 жовтня 2026"
+      },
+      "image": "art-moons.jpg",
+      "link": "nav:game"
+    },
+    {
+      "id": "n-discord",
+      "kicker": {
+        "ru": "СООБЩЕСТВО",
+        "en": "COMMUNITY",
+        "uk": "СПІЛЬНОТА"
+      },
+      "title": {
+        "ru": "Запущен Discord-сервер проекта: заходите, общайтесь и сообщайте об ошибках",
+        "en": "The project Discord server is live: join in, chat and report bugs",
+        "uk": "Запущено Discord-сервер проєкту: заходьте, спілкуйтеся й повідомляйте про помилки"
+      },
+      "date": {
+        "ru": "4 октября 2026",
+        "en": "October 4, 2026",
+        "uk": "4 жовтня 2026"
+      },
+      "image": "art-fog.jpg",
+      "link": "https://discord.gg/qave95HzGC"
+    },
+    {
+      "id": "n-team",
+      "kicker": {
+        "ru": "КОМАНДА",
+        "en": "TEAM",
+        "uk": "КОМАНДА"
+      },
+      "title": {
+        "ru": "Идёт набор в команду на энтузиазме: во вкладке «Вакансии» семь ролей",
+        "en": "We are recruiting for the team on enthusiasm: seven roles in the Jobs tab",
+        "uk": "Іде набір у команду на ентузіазмі: у вкладці «Вакансії» сім ролей"
+      },
+      "date": {
+        "ru": "4 октября 2026",
+        "en": "October 4, 2026",
+        "uk": "4 жовтня 2026"
+      },
+      "image": "art-sorcerer.jpg",
+      "link": "nav:jobs"
+    },
+    {
+      "id": "n-launcher",
+      "kicker": {
+        "ru": "ЛАУНЧЕР",
+        "en": "LAUNCHER",
+        "uk": "ЛАУНЧЕР"
+      },
+      "title": {
+        "ru": "Вышел лаунчер RED PESTILENCE: новости, Кодекс мира и самообновление в одном окне",
+        "en": "The RED PESTILENCE launcher is out: news, the World Codex and self-updates in one window",
+        "uk": "Вийшов лаунчер RED PESTILENCE: новини, Кодекс світу й самооновлення в одному вікні"
+      },
+      "date": {
+        "ru": "4 октября 2026",
+        "en": "October 4, 2026",
+        "uk": "4 жовтня 2026"
+      },
+      "image": "art-throne.jpg",
+      "link": "nav:home"
+    }
+  ]
+}
