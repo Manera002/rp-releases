@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RED PESTILENCE — скачать лаунчер</title>
+<meta name="description" content="RED PESTILENCE — мрачный dark-fantasy soulslike. Скачайте лаунчер для Windows.">
+<meta name="theme-color" content="#0a0506">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blood:#b3122e;--blood-hi:#e0304d;--blood-deep:#5a0614;--ink:#0a0506;--bone:#e9dfd6;--ash:#a89c95}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--ink);color:var(--bone);font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-size:20px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.bg{position:fixed;inset:0;z-index:-3;background:url(assets/bg.jpg) center 30%/cover no-repeat;transform:scale(1.06);filter:saturate(1) brightness(.78);animation:breathe 26s ease-in-out infinite alternate}
+.shade{position:fixed;inset:0;z-index:-2;background:
+ radial-gradient(ellipse 75% 65% at 50% 45%,rgba(10,5,6,.35) 0%,rgba(10,5,6,.62) 60%,rgba(5,2,3,.93) 100%),
+ linear-gradient(180deg,rgba(10,5,6,.55) 0%,rgba(10,5,6,.15) 35%,rgba(10,5,6,.85) 100%)}
+.noise{position:fixed;inset:-50%;z-index:-1;pointer-events:none;opacity:.09;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1.2s steps(6) infinite}
+.fog{position:fixed;left:-20%;right:-20%;bottom:-10%;height:55%;z-index:-1;pointer-events:none;opacity:.55;
+ background:radial-gradient(ellipse 40% 50% at 30% 70%,rgba(160,140,140,.18),transparent 70%),radial-gradient(ellipse 45% 45% at 75% 80%,rgba(140,110,115,.16),transparent 70%);filter:blur(18px);animation:drift 38s ease-in-out infinite alternate}
+.embers{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.embers i{position:absolute;bottom:-20px;width:3px;height:3px;border-radius:50%;background:#ff5a3c;box-shadow:0 0 8px 2px rgba(255,70,40,.7);opacity:0;animation:rise linear infinite}
+main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px 24px}
+.emblem{width:112px;height:112px;border-radius:50%;object-fit:cover;border:1px solid rgba(224,48,77,.55);box-shadow:0 0 0 6px rgba(10,5,6,.6),0 0 0 7px rgba(179,18,46,.35),0 0 60px rgba(179,18,46,.55);margin-bottom:20px}
+.kicker{font-family:"Cormorant SC",serif;font-weight:700;letter-spacing:.42em;font-size:14px;color:var(--ash);text-transform:uppercase;margin-bottom:10px}
+h1{font-family:"Cinzel Decorative","Cormorant SC",serif;font-weight:900;font-size:clamp(44px,8.2vw,118px);line-height:.95;letter-spacing:.02em;
+ background:linear-gradient(180deg,#fff2ee 0%,#e7c9c3 38%,#c23a50 70%,#6e0a1c 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+ filter:drop-shadow(0 4px 0 rgba(0,0,0,.6)) drop-shadow(0 0 28px rgba(179,18,46,.45))}
+.rule{display:flex;align-items:center;gap:14px;margin:20px auto 16px;width:min(520px,80%);color:var(--blood-hi)}
+.rule:before,.rule:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(224,48,77,.8),transparent)}
+.rule span{font-size:14px;transform:rotate(45deg);display:inline-block;width:8px;height:8px;background:var(--blood);box-shadow:0 0 10px var(--blood)}
+.slogan{font-style:italic;font-weight:500;font-size:clamp(22px,2.6vw,30px);color:#f1d6d1;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+.desc{max-width:660px;margin:16px auto 30px;color:#d2c6bf;font-size:clamp(18px,1.6vw,21px);font-weight:500;text-shadow:0 1px 8px rgba(0,0,0,.95)}
+.desc b{color:var(--bone);font-weight:700}
+.dl{position:relative;display:inline-flex;align-items:center;gap:16px;padding:22px 46px 22px 40px;font-family:"Cormorant SC",serif;font-weight:700;font-size:26px;letter-spacing:.12em;color:#fff;text-decoration:none;
+ background:linear-gradient(180deg,#d4203f 0%,#9c0f27 55%,#6a0818 100%);border:1px solid #ff6a80;border-radius:4px;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -3px 0 rgba(0,0,0,.35),0 14px 40px rgba(179,18,46,.45),0 0 0 6px rgba(179,18,46,.12);
+ text-shadow:0 2px 0 rgba(0,0,0,.45);transition:transform .2s,box-shadow .2s,filter .2s}
+.dl:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -3px 0 rgba(0,0,0,.35),0 18px 54px rgba(224,48,77,.6),0 0 0 8px rgba(179,18,46,.18)}
+.dl:focus-visible{outline:2px solid #fff;outline-offset:6px}
+.dl svg{width:26px;height:26px;flex:none}
+.dl:after{content:"";position:absolute;inset:-1px;border-radius:4px;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.25) 50%,transparent 70%);background-size:250% 100%;animation:sheen 5s ease-in-out infinite;pointer-events:none}
+.meta{margin-top:18px;font-family:"Cormorant SC",serif;font-weight:600;letter-spacing:.16em;font-size:15px;color:var(--ash)}
+.meta .dot{color:var(--blood-hi);margin:0 10px}
+.note{max-width:520px;margin:14px auto 0;font-size:16px;color:#9a8e88;line-height:1.45}
+.note kbd{font-family:inherit;white-space:nowrap;color:#d8ccc5;border-bottom:1px solid rgba(224,48,77,.5)}
+.discord{margin-top:26px;display:inline-flex;align-items:center;gap:10px;color:#e6d9d2;text-decoration:none;font-family:"Cormorant SC",serif;font-weight:700;letter-spacing:.14em;font-size:17px;padding:10px 22px;border:1px solid rgba(233,223,214,.22);border-radius:4px;background:rgba(10,5,6,.45);backdrop-filter:blur(4px);transition:border-color .2s,color .2s}
+.discord:hover{border-color:rgba(224,48,77,.8);color:#fff}
+.discord svg{width:22px;height:22px}
+@keyframes rise{0%{transform:translate(0,0);opacity:0}10%{opacity:.9}100%{transform:translate(var(--dx),-105vh);opacity:0}}
+@keyframes drift{from{transform:translateX(-4%)}to{transform:translateX(4%)}}
+@keyframes breathe{from{transform:scale(1.06)}to{transform:scale(1.12)}}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+@keyframes sheen{0%,60%{background-position:150% 0}100%{background-position:-50% 0}}
+@media (max-width:600px){
+ body{font-size:18px}
+ main{padding:48px 18px 28px}
+ .emblem{width:104px;height:104px;margin-bottom:22px}
+ .kicker{letter-spacing:.3em;font-size:12px}
+ .dl{width:100%;justify-content:center;padding:20px 18px;font-size:22px;letter-spacing:.08em}
+ .meta{font-size:13px;letter-spacing:.1em}
+}
+@media (prefers-reduced-motion:reduce){
+ .bg,.noise,.fog,.dl:after{animation:none}
+ .embers{display:none}
+ .dl{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<div class="shade" aria-hidden="true"></div>
+<div class="fog" aria-hidden="true"></div>
+<div class="noise" aria-hidden="true"></div>
+<div class="embers" aria-hidden="true" id="embers"></div>
+
+<main>
+  <img class="emblem" src="assets/emblem.jpg" alt="" width="112" height="112">
+  <div class="kicker">Эрлион ждёт</div>
+  <h1>RED PESTILENCE</h1>
+  <div class="rule" aria-hidden="true"><span></span></div>
+  <p class="slogan">«Некоторым вещам лучше было остаться под землёй.»</p>
+  <p class="desc">Мрачный <b>dark-fantasy психологический soulslike</b> о мире, который уже проиграл. Багряная комета завершила свой путь, но среди павших соборов, забытых городов и заражённых земель Эрлиона всё ещё слышен лязг стали. Заражение меняет героя и то, как он видит мир, а легенды о Камнях и первых Владыках противоречат друг другу.</p>
+
+  <a class="dl" href="https://github.com/Manera002/rp-releases/releases/latest/download/RP-Launcher-Setup-4.13.2.exe" download>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m6.5 10 5.5 5.5 5.5-5.5"/><path d="M4 20h16"/></svg>
+    Скачать лаунчер
+  </a>
+  <div class="meta">Версия 4.13.2<span class="dot">◆</span>Windows<span class="dot">◆</span>85 МБ</div>
+  <p class="note">Если Windows покажет окно SmartScreen, нажмите <kbd>Подробнее</kbd> → <kbd>Выполнить в любом случае</kbd>: установщик пока не подписан.</p>
+
+  <a class="discord" href="https://discord.gg/ZyZfyj4fv9" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
+    Discord сообщества
+  </a>
+</main>
+
+<script>
+(function(){
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var box=document.getElementById('embers'), n=window.innerWidth<600?14:28;
+  for(var i=0;i<n;i++){
+    var e=document.createElement('i'), s=(Math.random()*2.5+1.5).toFixed(1);
+    e.style.left=(Math.random()*100)+'%';
+    e.style.width=e.style.height=s+'px';
+    e.style.setProperty('--dx',((Math.random()-.5)*160).toFixed(0)+'px');
+    e.style.animationDuration=(9+Math.random()*12).toFixed(1)+'s';
+    e.style.animationDelay=(-Math.random()*20).toFixed(1)+'s';
+    box.appendChild(e);
+  }
+})();
+</script>
+</body>
+</html>
